@@ -11,10 +11,9 @@ import { Dashboard } from './components/Dashboard';
 import { AuthContainer } from './components/Auth/AuthContainer';
 import { Messenger } from './components/Social/Messenger';
 import { FriendsManager } from './components/Social/FriendsManager';
-import { GroupChat } from './components/Social/GroupChat';
 // Add this import at the top
 import { Certifications } from './components/Certifications';
-import { ArrowLeft, BarChart3, BookOpen, MessageCircle, Users, LogOut, Award, UsersIcon } from 'lucide-react';
+import { ArrowLeft, BarChart3, BookOpen, MessageCircle, Users, LogOut, Award } from 'lucide-react';
 // Add this import
 import { addCertificateToUser } from './data/users';
 
@@ -29,7 +28,6 @@ function App() {
   const [showFriendsManager, setShowFriendsManager] = useState(false);
   // Add this state
   const [showCertifications, setShowCertifications] = useState(false);
-  const [showGroupChat, setShowGroupChat] = useState(false);
 
   // Check for logged in user on component mount
   useEffect(() => {
@@ -187,14 +185,6 @@ function App() {
               <Users className="w-6 h-6" />
             </button>
             
-            <button
-              onClick={() => setShowGroupChat(true)}
-              className="p-2 rounded-full hover:bg-gray-800 transition-colors"
-              title="Group Chat"
-            >
-              <UsersIcon className="w-6 h-6" />
-            </button>
-            
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">
                 {currentUser.name.charAt(0)}
@@ -287,13 +277,6 @@ function App() {
         <FriendsManager
           currentUser={currentUser}
           onClose={() => setShowFriendsManager(false)}
-        />
-      )}
-      
-      {showGroupChat && (
-        <GroupChat
-          currentUser={currentUser}
-          onClose={() => setShowGroupChat(false)}
         />
       )}
       
